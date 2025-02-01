@@ -6,26 +6,25 @@
 ![Docker](https://img.shields.io/badge/Docker-Supported-blue)
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Support-lightorange)](https://www.buymeacoffee.com/rootiovo)
 
-**FetchArr** is a metadata aggregation and enrichment tool for your media library. It integrates with **Jellyfin**, **Radarr**, **Sonarr**, and external APIs like **TMDb**, **IMDb**, and **TVDb** to fetch, enrich, and provide comprehensive metadata for movies and TV shows.
+**FetchArr** is a powerful metadata aggregation and enrichment tool for your media library. It integrates with **Jellyfin**, **Radarr**, **Sonarr**, and external APIs like **TMDb**, **IMDb**, and **TVDb** to fetch, enrich, and store metadata for movies and TV shows.
 
 ---
 
 ## Features
 
-| Feature                 | Status                                                                      | Description                                                |
-|-------------------------|-----------------------------------------------------------------------------|------------------------------------------------------------|
-| **Integrations**        | ![Implemented](https://img.shields.io/badge/Status-Implemented-brightgreen) | Fetch metadata directly from Jellyfin, Radarr, and Sonarr. |
-| **Metadata Enrichment** | ![Implemented](https://img.shields.io/badge/Status-Implemented-brightgreen) | Enhance data with information from TMDb, IMDb, and TVDb.   |
-| **Efficient Caching**   | ![Implemented](https://img.shields.io/badge/Status-Implemented-brightgreen) | Redis-backed caching for faster responses.                 |
-| **Persistent Storage**  | ![Implemented](https://img.shields.io/badge/Status-Implemented-brightgreen) | PostgreSQL for long-term metadata storage.                 |
-| **REST API**            | ![Implemented](https://img.shields.io/badge/Status-Implemented-brightgreen) | Easy-to-use API for querying and managing metadata.        |
+| Feature                 | Status        | Description                                       |
+|-------------------------|---------------|---------------------------------------------------|
+| **Integrations**        | ✅ Implemented | Fetch metadata from Jellyfin, Radarr, and Sonarr. |
+| **Metadata Enrichment** | ✅ Implemented | Enhance data using TMDb, IMDb, and TVDb.          |
+| **Efficient Caching**   | ✅ Implemented | Redis-backed caching for fast responses.          |
+| **Persistent Storage**  | ✅ Implemented | PostgreSQL-based long-term metadata storage.      |
+| **REST API**            | ✅ Implemented | Simple API for querying and managing metadata.    |
 
 ---
 
 ## Getting Started
 
 ### Prerequisites
-
 - Python 3.13+
 - Docker and Docker Compose
 - API keys for TMDb, IMDb, TVDb, Jellyfin, Radarr, and Sonarr
@@ -40,7 +39,7 @@
 
 2. **Set Up Environment Variables**:
    Create a `.env` file in the root directory and add:
-   ```env
+   ```ini
    DATABASE_URL=postgresql://user:password@db/media_aggregator
    REDIS_URL=redis://redis:6379
    TMDB_API_KEY=your_tmdb_api_key
@@ -56,40 +55,41 @@
 
 3. **Build and Start the Application**:
    ```bash
-   docker-compose up --build
+   docker-compose up --build -d
    ```
 
 4. **Access the API**:
-   Visit `http://localhost:8000` to interact with FetchArr's REST API.
+   - Visit `http://localhost:8000/docs` for the interactive API documentation.
+   - Access `http://localhost:8000` to use FetchArr.
 
 ---
 
 ## API Endpoints
 
 ### Metadata Management
-- `GET /metadata` - List all metadata stored in the database.
-- `POST /enrich/{title}` - Enrich metadata for a specific title.
+- `GET /metadata` - List all stored metadata.
+- `POST /metadata/enrich/{title}` - Enrich metadata for a specific title.
 
 ### Jellyfin Integration
-- `GET /jellyfin/library` - Fetch media library from Jellyfin.
+- `GET /jellyfin/library` - Fetch the media library from Jellyfin.
 
 ### Radarr Integration
-- `GET /radarr/movies` - Fetch movie library from Radarr.
+- `GET /radarr/movies` - Retrieve movie metadata from Radarr.
 
 ### Sonarr Integration
-- `GET /sonarr/series` - Fetch TV series library from Sonarr.
+- `GET /sonarr/series` - Retrieve TV show metadata from Sonarr.
 
 ---
 
 ## Roadmap
 
-| Feature                    | Status                                                         | Description                                       |
-|----------------------------|----------------------------------------------------------------|---------------------------------------------------|
-| **Plex Integration**       | ![Planned](https://img.shields.io/badge/Status-Planned-yellow) | Add support for fetching metadata from Plex.      |
-| **Emby Integration**       | ![Planned](https://img.shields.io/badge/Status-Planned-yellow) | Add support for fetching metadata from Emby.      |
-| **Advanced Filtering**     | ![Planned](https://img.shields.io/badge/Status-Planned-yellow) | Enable filtering by genre, rating, release year.  |
-| **Frontend UI**            | ![Planned](https://img.shields.io/badge/Status-Planned-yellow) | Build a web dashboard for metadata visualization. |
-| **Enhanced Notifications** | ![Planned](https://img.shields.io/badge/Status-Planned-yellow) | Add support for custom notifications.             |
+| Feature                    | Status    | Description                                |
+|----------------------------|-----------|--------------------------------------------|
+| **Plex Integration**       | ⏳ Planned | Add metadata support for Plex.             |
+| **Emby Integration**       | ⏳ Planned | Add metadata support for Emby.             |
+| **Advanced Filtering**     | ⏳ Planned | Filter by genre, rating, and release year. |
+| **Frontend UI**            | ⏳ Planned | Web dashboard for metadata visualization.  |
+| **Enhanced Notifications** | ⏳ Planned | Custom notifications for new content.      |
 
 ---
 
@@ -108,10 +108,8 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 If you like this project, consider buying me a coffee to support further development:
 
-
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Support-lightorange)](https://www.buymeacoffee.com/rootiovo)
 
 ---
-<div style="text-align: center">
-  <p>Made with ❤️ by <a href="https://stephenjacobs.io">Stephen Jacobs</a></p>
-</div>
 
+<p align="center">Made with ❤️ by <a href="https://stephenjacobs.io">Stephen Jacobs</a></p>
